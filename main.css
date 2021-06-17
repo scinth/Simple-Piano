@@ -1,0 +1,83 @@
+:root {
+	--piano-width: 400px;
+}
+* {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 1em;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body {
+	color: white;
+	background-color: black;
+	min-height: 100vh;
+	height: 100vh;
+}
+main {
+	width: inherit;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#piano {
+	--top-raduis: calc(var(--piano-width) * 0.08);
+	--bottom-raduis: calc(var(--piano-width) * 0.03);
+	width: var(--piano-width);
+	height: calc(var(--piano-width) / 2);
+	background: linear-gradient(#888, #333);
+	border-radius: var(--top-raduis) var(--top-raduis) var(--bottom-raduis)
+		var(--bottom-raduis);
+	position: relative;
+}
+.keys {
+	width: 90%;
+	height: 70%;
+	margin-left: 5%;
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	justify-content: stretch;
+	align-items: stretch;
+	border-width: 2px 1px 0;
+	border-style: inset inset none;
+}
+.keys div {
+	--key-radius: calc(var(--piano-width) * 0.014);
+	flex-shrink: 0;
+	border-bottom-left-radius: var(--key-radius);
+	border-bottom-right-radius: var(--key-radius);
+	cursor: pointer;
+}
+.keys .white {
+	width: calc(100% / 7);
+	border: 1.5px outset #808080;
+	border-top: none;
+	background: linear-gradient(to bottom right, #ddd, #fff);
+}
+.keys .white.active {
+	background: #ddd;
+	height: 99.5%;
+}
+.keys .black {
+	--key-width: 7.8%;
+	width: var(--key-width);
+	height: 50%;
+	margin-left: calc(var(--key-width) / -2);
+	margin-right: calc(var(--key-width) / -2);
+	border-style: none outset outset;
+	border-width: 0 5px 10px;
+	border-color: #555;
+	background: linear-gradient(to bottom right, #000, #333);
+	z-index: 1;
+	box-shadow: 1px 2px 3px 1px rgb(0, 0, 0, 0.3);
+}
+.keys .black.active {
+	background: #111;
+	height: 49%;
+	box-shadow: none;
+}
