@@ -7,25 +7,19 @@ const playNote = function (note) {
 
 document.addEventListener('DOMContentLoaded', function () {
 	notes = document.querySelectorAll('audio');
-	keys = [...document.querySelectorAll('.keys div')];
+	keys = document.querySelectorAll('.keys div');
 
 	let keyset = document.getElementsByClassName('keys')[0];
 	keyset.addEventListener('mousedown', function (e) {
-		if (e.repeat) return;
 		let index = Number(e.target.dataset.key_index);
 		playNote(notes[index]);
-		if (!keys[index].classList.contains('active'))
-			keys[index].classList.add('active');
+		keys[index].classList.add('active');
 		e.stopPropagation();
 	});
 	keyset.addEventListener('mouseup', function (e) {
-		if (e.repeat) return;
 		let index = Number(e.target.dataset.key_index);
 		keys[index].classList.remove('active');
 		e.stopPropagation();
-	});
-	keyset.addEventListener('drag', function () {
-		return;
 	});
 	updatePianoSize();
 });
